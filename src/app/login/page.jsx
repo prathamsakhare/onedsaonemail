@@ -1,43 +1,56 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import axios from "axios";
-
+import Image from "next/image";
 const LoginPage = () => {
   const [user, setUser] = useState({
     email: "",
-    password: ""
+    password: "",
+  
   });
 
-  const onlogin = async () => {};
+  const onSignup = async () => {
+    console.log({ user });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>login</h1>
-      <hr />
-      <label htmlFor="email">email</label>
-      <input
-        className="p-1 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        type="email"
-        id="email"
-        value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder=" email"
-      />
-      <label htmlFor="password">password</label>
-      <input
-        className="p-1 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        type="password"
-        id="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder=" password"
-      />
-      <button className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" onClick={onlogin}>
-        Login here!
-      </button>
-      <Link href='/signup'>Visit Signup Page</Link>
+      <div className="flex flex-col items-center justify-center p-12 py-12 rounded-xl bg-slate-800 w-[50%]">
+        <Image src={"/logo.webp"} width={"100"} className="mb-2" height={"100"} />
+        <h1 className="text-4xl pb-7">Login </h1>
+        <hr />
+        
+        <label htmlFor="email" className="self-start text-xl mb-3">
+          Email
+        </label>
+        <input
+          className="p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 w-[97%] self-start text-black"
+          type="email"
+          id="email"
+          value={user.email}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          placeholder="Email"
+        />
+        <label htmlFor="password" className="self-start text-xl mb-3">
+          Password
+        </label>
+        <input
+          className="p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 w-[97%] self-start text-black"
+          type="password"
+          id="password"
+          value={user.password}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          placeholder="Password"
+        />
+
+        <button
+          className="p-4 border border-green-700 rounded-lg my-4 focus:outline-none  bg-buttonColor text-lg"
+          onClick={onSignup}
+        >
+          Login
+        </button>
+        <Link href="/signup">SignUp Here!</Link>
+      </div>
     </div>
   );
 };
