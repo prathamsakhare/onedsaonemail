@@ -9,7 +9,7 @@ const Email = () => {
     async function handleSubmit(e){
         e.preventDefault();
         await fetch('api/email', {
-            method : 'GET',
+            method: 'POST',
             body : JSON.stringify({
                 firstName : "Cosmo"
             })
@@ -19,7 +19,7 @@ const Email = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <button onClick={handleSubmit()}>Send Email</button>
+          <button onClick={handleSubmit}>Send Email</button>
     </div>
   );
 };
